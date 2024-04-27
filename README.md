@@ -1,12 +1,18 @@
 
-1. Build
+#### Build
 --------
 
+```
   $ mkdir build && cd build
   $ cmake .. -DCMAKE_BUILD_TYPE=Release
   $ make -j 8
+```
 
-2. Run
+
+#### Run
 ------
+```
   $ ./main
+```
+
 
