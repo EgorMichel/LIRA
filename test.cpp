@@ -23,22 +23,17 @@ public:
 
     int GetVertexesCount() { return n; }
 
-    bool operator()(const int from, const int to)
-    {
+    bool operator()(const int from, const int to){
         return A[from * n + to] == 1;
     }
 
-    float operator()(const int num)
-    {
+    float operator()(const int num){
         return w[num];
     }
 
-    void changeColumn(int row, int num)
-    {
-        for (int j = 0; j < n; ++j)
-        {
-            if (A[row * n + j] == 0)
-            {
+    void changeColumn(int row, int num){
+        for (int j = 0; j < n; ++j){
+            if (A[row * n + j] == 0){
                 for (int i = 0; i < n; ++i)
                     A[n * i + j] += num;
             }
@@ -46,6 +41,7 @@ public:
     }
 
 };
+
 
 
 std::pair<std::vector<int>, float> DepthFirstSearch(Graph &graph, const int start_vertex) {
