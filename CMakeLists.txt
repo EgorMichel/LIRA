@@ -9,4 +9,4 @@ add_subdirectory(src)
 # enable_testing()
 # add_subdirectory(tests)
 
-add_executable(main main.cpp)
+add_executable(main test.cpp)
