@@ -11,7 +11,7 @@
 #include <vector>
 #include <string>
 
-std::vector<int> readCSV(const std::string& filename) {
+std::vector<int> readCSVi(const std::string& filename) {
     std::vector<int> matrix;
 
     std::ifstream file(filename);
@@ -29,6 +29,32 @@ std::vector<int> readCSV(const std::string& filename) {
         while (std::getline(ss, cell, ','))
         {
             matrix.push_back(std::stoi(cell));
+        }
+
+    }
+
+    file.close();
+    return matrix;
+}
+
+std::vector<float> readCSVf(const std::string& filename) {
+    std::vector<float> matrix;
+
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+        return matrix;
+    }
+
+    std::string line;
+    while (std::getline(file, line))
+    {
+        std::stringstream ss(line);
+        std::string cell;
+
+        while (std::getline(ss, cell, ','))
+        {
+            matrix.push_back(std::stof(cell));
         }
 
     }

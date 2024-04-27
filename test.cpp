@@ -84,7 +84,7 @@ std::pair<std::vector<int>, float> DepthFirstSearch(Graph &graph, const int star
     visited[start_vertex] = true;
     s.push(start_vertex);
 
-    enter_order.emplace_back(start_vertex);
+    enter_order.emplace_back(start_vertex + 1);
     sum_weight += graph(start_vertex);
 
     max_weight = sum_weight;
@@ -104,7 +104,7 @@ std::pair<std::vector<int>, float> DepthFirstSearch(Graph &graph, const int star
                 s.push(to);
                 changes.push(graph.changeColumn(to));
 
-                enter_order.emplace_back(to);
+                enter_order.emplace_back(to + 1);
                 sum_weight += graph(to);
                 if (sum_weight > max_weight)
                 {
@@ -166,11 +166,12 @@ int main() {
 //        std::cout<<std::endl;
 //    }
 
-    std::vector<int> A = readCSV(DIR_PATH + "resources/matrix_only.csv");
-    std::vector<float> w = {6.7871, 0.4965, 0.5813,6.3638,7.7534,6.7388,2.1945,5.7203,2.5396,0.0394,12.3052,5.3397,
-                          0.7031, 4.514,1.4971, 5.853,1.8569,3.5543,1.9219,11.8509,2.2925,5.1243,9.2748,2.9068,
-                          5.4177, 3.3817, 3.5976, 0.5599};
+    std::vector<int> A = readCSVi(DIR_PATH + "resources/12x12_1.csv");
+    std::vector<float> w = readCSVf(DIR_PATH + "resources/w_2.csv");
 
+//    std::vector<float> res = readCSVf(DIR_PATH + "resources/w_1.csv") ;
+//    for (const auto el: res)
+//        std::cout << el << ' ';
 
     Graph g(A, w);
     auto res = DepthFirstSearch(g, 0);
